@@ -1,0 +1,13 @@
+train: D:/Downloads/Smartphone detection.v1i.yolov5pytorch/train/images
+val: D:/Downloads/Smartphone detection.v1i.yolov5pytorch/valid/images
+test: D:/Downloads/Smartphone detection.v1i.yolov5pytorch/test/images
+
+nc: 4
+names: ['0', '123', 'Smartphone', 'phone']
+
+roboflow:
+  workspace: dinesh-zcqaq
+  project: smartphone-detection-c7e6g-rerzh
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/dinesh-zcqaq/smartphone-detection-c7e6g-rerzh/dataset/1
