@@ -1,71 +1,75 @@
-# Computer-vision-for-Autonomous-Vehicles
-Support in setting up a hardware platform for the course" Application of machine learning in Automotive Systems" with Prof. Dr. Thomas Ewender
+📖 Project: Application of Machine Learning in Automotive Systems
+with Prof. Dr. Thomas Ewender
+Support in setting up a hardware platform and implementing object detection for autonomous vehicles.
 
-This project explores computer vision techniques for autonomous vehicles, with an emphasis on energy-efficient object detection using PyTorch and the Sony IMX500 Smart Vision platform.
-I also developed and trained a custom smartphone detection model specifically optimized to run on a Raspberry Pi.
+🚗 Project Overview
+This project explores energy-efficient computer vision techniques for autonomous vehicles, combining the power of PyTorch, Sony IMX500 Smart Vision Sensor, and Raspberry Pi.
+We designed and deployed an end-to-end object detection pipeline that:
 
-📋 Overview
-Implemented object detection for autonomous vehicles using an existing COCO dataset with PyTorch.
+Runs real-time detection on the Raspberry Pi for prototyping.
 
-Optimized the detection pipeline to reduce power consumption during inference.
+Leverages the Sony IMX500 sensor for edge AI computation to minimize load and power consumption on the Raspberry Pi.
 
-Integrated with the Sony IMX500 Smart Vision sensor, offloading heavy AI computation to the camera itself and reducing the workload on the Raspberry Pi.
+Includes a custom smartphone detection model, trained specifically for this application.
 
-Created and trained a custom smartphone detection model, capable of running efficiently on a Raspberry Pi.
+The setup supports autonomous vehicle perception, emphasizing energy efficiency and embedded deployment.
 
-Used Roboflow to prepare, annotate, and manage the custom dataset.
+🔗 Hardware & Software Toolchain
+🔷 1. Model Development & Training
+✅ Framework: PyTorch (YOLOv5)
+✅ Dataset:
 
-🧪 Technologies Used
-🔍 PyTorch: For training and inference of YOLOv5 models.
+COCO dataset (for baseline training).
 
-📝 COCO Dataset: Standard dataset used to build baseline object detection.
+Custom smartphone dataset (collected & annotated using Roboflow).
+✅ Training:
 
-📦 TorchScript & ONNX: For model export and optimization.
+Trained YOLOv5 models on GPU-enabled PC.
 
-📷 Sony IMX500: Edge AI camera for offloading computation.
+Fine-tuned a custom smartphone detection model.
 
-🍓 Raspberry Pi: Lightweight, low-power device for running inference and control.
+🔷 2. Model Conversion & Optimization
+To run on embedded hardware, models need to be optimized:
 
-🛠 Roboflow: For dataset creation and annotation.
+Exported trained .pt model to:
 
-🚀 Project Phases
-Phase 1: Baseline Object Detection
-Trained a YOLOv5 model on the COCO dataset.
+TorchScript → runs on Raspberry Pi with PyTorch.
 
-Converted the model to TorchScript and ONNX for deployment.
+ONNX → runs on Raspberry Pi with ONNX Runtime or converted for IMX500.
 
-Optimized the code to minimize power consumption and CPU load on the Raspberry Pi.
+For IMX500:
 
-Phase 2: Edge AI with IMX500
-Packaged ONNX models into .rpk files using the IMX500 SDK.
+Used Sony’s IMX500 SDK to package the ONNX model into .rpk (runtime package) format.
 
-Deployed the .rpk package to the IMX500 camera.
+🔷 3. Deployment Platforms
+📷 Sony IMX500 Smart Vision Sensor
+Performs inference on the sensor itself → outputs detection results directly (bounding boxes, labels).
 
-Offloaded object detection to the camera, allowing the Raspberry Pi to focus on decision-making logic with reduced processing.
+Offloads heavy computation from Raspberry Pi, lowering power usage and latency.
 
-Phase 3: Custom Smartphone Detection
-Collected and labeled a smartphone detection dataset using Roboflow.
+Requires .rpk model package, deployed via IMX500 SDK.
 
-Trained a YOLOv5 model on the custom dataset.
+🍓 Raspberry Pi
+Runs TorchScript or ONNX models locally using Python.
 
-Exported the trained model (TorchScript & ONNX) for deployment on Raspberry Pi and IMX500.
+Interfaces with IMX500 to receive inference results and/or visualize them.
 
-Integrated the smartphone detection pipeline with webcam / camera on the Raspberry Pi.
+Lightweight device, handles decision-making, logging, and user interaction.
 
-📁 Folder Structure
+📁 Project Folder Structure
 bash
 Copy
 Edit
 .
-├── models/               # Trained models (best.pt, best.torchscript, best.onnx)
-├── datasets/             # Dataset files and annotations
-├── scripts/              # Training and inference scripts
-├── imx500/               # RPK packaging files and deployment instructions
-├── raspberry_pi/         # Raspberry Pi inference code
-├── requirements.txt      # Python dependencies
+├── models/            # Trained models (best.pt, best.torchscript, best.onnx)
+├── datasets/          # Dataset files and annotations
+├── scripts/           # Training and inference scripts
+├── imx500/            # RPK packaging files and deployment instructions
+├── raspberry_pi/      # Raspberry Pi inference & interface code
+├── requirements.txt    # Python dependencies
 └── README.md
 ⚙️ Setup & Installation
-On Raspberry Pi
+🔷 On Raspberry Pi
 bash
 Copy
 Edit
@@ -73,38 +77,61 @@ sudo apt update
 sudo apt install python3-pip
 python3 -m venv yolo-venv
 source yolo-venv/bin/activate
-
 pip install torch torchvision opencv-python
 pip install -r requirements.txt
-Run detection with webcam:
+Run real-time detection with webcam:
 
 bash
 Copy
 Edit
 python3 detect.py --weights models/best.torchscript --source 0
-On PC (for IMX500 SDK)
-Download the IMX500 SDK from the Sony Developer site.
+🔷 On PC (for IMX500 SDK)
+Install Sony IMX500 SDK (available from Sony developer portal).
 
-Use the provided tools to convert your ONNX model to .rpk and deploy it to the IMX500 camera.
+Convert ONNX model → .rpk using the SDK tools.
+
+Deploy .rpk to the IMX500 camera.
+
+🚀 Project Phases & Achievements
+📍 Phase 1: Baseline Object Detection
+Trained YOLOv5 model on COCO dataset.
+
+Converted & optimized for Raspberry Pi.
+
+Reduced CPU load & power consumption during inference.
+
+📍 Phase 2: Edge AI with IMX500
+Converted ONNX model into .rpk.
+
+Deployed to IMX500 → inference happens on sensor.
+
+Raspberry Pi handles control & downstream tasks only.
+
+📍 Phase 3: Custom Smartphone Detection
+Collected & annotated a custom dataset with Roboflow.
+
+Trained & deployed smartphone detection model.
+
+Runs efficiently both on Raspberry Pi and IMX500.
+
+🧪 Technologies Used
+Tool/Tech	Purpose
+PyTorch	Training & inference (YOLOv5)
+Roboflow	Dataset preparation & annotation
+COCO Dataset	Baseline object detection training
+TorchScript & ONNX	Model export & optimization
+Sony IMX500	On-sensor inference
+Raspberry Pi	Low-power host device
+OpenCV	Visualization & camera control
 
 🎯 Results
-Achieved real-time object detection on Raspberry Pi with optimized power usage.
-
-Successfully deployed detection models on IMX500, which handles AI inference internally.
-
-Custom smartphone detection works effectively on both Raspberry Pi and IMX500.
+✅ Real-time object detection on Raspberry Pi with reduced power usage.
+✅ IMX500 successfully handles inference, offloading computation.
+✅ Custom smartphone detection model deployed and operational on both platforms.
 
 📚 Notes
-Raspberry Pi runs TorchScript or ONNX models using PyTorch/ONNX Runtime.
+Raspberry Pi runs TorchScript/ONNX models with PyTorch/ONNX Runtime.
 
-IMX500 requires .rpk files, which are created on a Linux PC with the IMX500 SDK.
+IMX500 requires .rpk files created on a PC with SDK.
 
-Roboflow is used for dataset management and annotation.
-
-Acknowledgments
-
-Roboflow for dataset tools.
-
-Ultralytics for YOLOv5.
-
-Sony for the IMX500 Smart Vision Platform.
+Roboflow is highly effective for dataset management & labeling.
