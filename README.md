@@ -126,7 +126,9 @@ OpenCV	Visualization & camera control
 
 🎯 Results
 ✅ Real-time object detection on Raspberry Pi with reduced power usage.
+
 ✅ IMX500 successfully handles inference, offloading computation.
+
 ✅ Custom smartphone detection model deployed and operational on both platforms.
 
 📚 Notes
