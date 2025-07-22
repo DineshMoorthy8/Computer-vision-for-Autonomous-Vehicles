@@ -93,6 +93,7 @@ Convert ONNX model → .rpk using the SDK tools.
 Deploy .rpk to the IMX500 camera.
 
 🚀 Project Phases & Achievements
+
 📍 Phase 1: Baseline Object Detection
 Trained YOLOv5 model on COCO dataset.
 
@@ -115,6 +116,7 @@ Trained & deployed smartphone detection model.
 Runs efficiently both on Raspberry Pi and IMX500.
 
 🧪 Technologies Used
+
 Tool/Tech	Purpose
 PyTorch	Training & inference (YOLOv5)
 Roboflow	Dataset preparation & annotation
@@ -125,6 +127,7 @@ Raspberry Pi	Low-power host device
 OpenCV	Visualization & camera control
 
 🎯 Results
+
 ✅ Real-time object detection on Raspberry Pi with reduced power usage.
 
 ✅ IMX500 successfully handles inference, offloading computation.
@@ -132,6 +135,7 @@ OpenCV	Visualization & camera control
 ✅ Custom smartphone detection model deployed and operational on both platforms.
 
 📚 Notes
+
 Raspberry Pi runs TorchScript/ONNX models with PyTorch/ONNX Runtime.
 
 IMX500 requires .rpk files created on a PC with SDK.
