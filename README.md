@@ -102,6 +102,9 @@ IMX500 requires .rpk files, which are created on a Linux PC with the IMX500 SDK.
 Roboflow is used for dataset management and annotation.
 
 Acknowledgments
+
 Roboflow for dataset tools.
+
 Ultralytics for YOLOv5.
+
 Sony for the IMX500 Smart Vision Platform.
