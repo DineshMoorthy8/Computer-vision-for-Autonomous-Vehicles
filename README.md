@@ -1,5 +1,5 @@
 # Computer-vision-for-Autonomous-Vehicles
-Support in setting up a hardware platform for the course" Application of machine learning in Automotive Systems" with Prof.Holger Jehle
+Support in setting up a hardware platform for the course" Application of machine learning in Automotive Systems" with Prof. Dr. Thomas Ewender
 
 This project explores computer vision techniques for autonomous vehicles, with an emphasis on energy-efficient object detection using PyTorch and the Sony IMX500 Smart Vision platform.
 I also developed and trained a custom smartphone detection model specifically optimized to run on a Raspberry Pi.
@@ -101,24 +101,7 @@ IMX500 requires .rpk files, which are created on a Linux PC with the IMX500 SDK.
 
 Roboflow is used for dataset management and annotation.
 
-📌 Future Work
-Expand detection classes beyond smartphones.
-
-Integrate vehicle control logic based on detected objects.
-
-Explore further optimization for ultra-low-power scenarios.
-
-🙏 Acknowledgments
-Roboflow for dataset tools.
-
-Ultralytics for YOLOv5.
-
-Sony for the IMX500 Smart Vision Platform.
-
-
--Explore further optimization for ultra-low-power scenarios.
-
-🙏 Acknowledgments
+Acknowledgments
 Roboflow for dataset tools.
 Ultralytics for YOLOv5.
 Sony for the IMX500 Smart Vision Platform.
